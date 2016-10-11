@@ -1,0 +1,81 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+    <title>Test</title>
+    <style>
+        #outer {
+            background-color: deepskyblue;
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+        }
+        #inner {
+            background-color: bisque;
+             width: 250px;
+            height: 120px;
+            /*float: left;*/
+            border: 2px solid brown;
+            margin: 5px;
+            text-align: center;
+        }
+        p {
+            background-color: yellow;
+        }
+        
+        span {
+            background-color: deeppink;
+            color: antiquewhite;
+            font-size: 18px;
+            
+        }
+    </style>
+    <script>
+    
+        $(document).ready(function(){
+            $("*").click(function(e){
+                e.stopPropagation();
+                var cklicked = $(e.target);
+                
+                var top = cklicked.offset().top;
+                var left = cklicked.offset().left;
+                var tagName = cklicked.prop("tagName");
+                
+                console.log("top - " + top + ", left - " + left + ", tagName - " + tagName);
+            })
+            
+            var element = document.elementFromPoint(67, 67);
+            console.log ("elementFromPoint returned:");
+             console.log ($(element).clone().children().remove().end().text());
+            
+            
+        })
+        
+    </script>
+</head>
+
+<body>
+Body
+<div id="outer"> Outer div
+    <div id="inner" >Inner div №2
+    <p>
+       Paragraph 1
+        <span>It's SPAN element</span>
+    </p>
+    <p> Paragraph 2</p>
+    </div>
+    <div id="inner">Inner div №2</div>
+    <div id="inner">Inner div №3</div>
+</div>
+
+</body>
+
+</html>
